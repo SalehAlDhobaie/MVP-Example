@@ -51,7 +51,7 @@ class PostPreseter {
                     // Return Success Response to the User.
                     
                     // Append Values to get last Post Number + stuff .. etc 
-                    self?.postData += mappedPosts
+                    self?.postData = mappedPosts
                     // NOTE : We might face an issue with number that we receive with the post has returned to Cntroller
                     self?.delegate?.fetchPostOnSuccess(result: mappedPosts)
                     
@@ -84,9 +84,18 @@ class PostPreseter {
     }
     
     
-    func getPostCount() {
-        self.delegate?.numperOfPosts(count: self.postData.count)
+    func getPostCount() -> Int {
+        return self.postData.count
     }
+    
+    func getItem(index : Int) -> Post {
+        
+        if index > postData.count {
+            fatalError(" ")
+        }
+        return postData[index]
+    }
+    
     
     
 }

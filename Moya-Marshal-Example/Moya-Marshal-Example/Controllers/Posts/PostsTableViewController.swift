@@ -12,8 +12,7 @@ import Moya_Marshal
 class PostsTableViewController: UITableViewController {
 
     let activity = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-    var tableViewData : [Post] = []
-    var presnter : PostPreseter!
+    var presenter : PostPreseter!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +27,7 @@ class PostsTableViewController: UITableViewController {
         tableView.estimatedRowHeight = 44.0
         
         // start initiate PostPresenter .. another option we can do it as 'lazy', and init(coder: .. ) .. etc
-        self.presnter = PostPreseter(delegate: self)
+        self.presenter = PostPreseter(delegate: self)
         referchBarButton()
     }
 
@@ -41,14 +40,14 @@ class PostsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return tableViewData.count
+        return self.presenter.getPostCount()
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
         // Configure the cell...
-        let item = tableViewData[indexPath.row]
+        let item = presenter.getItem(index: indexPath.row)
         cell.textLabel?.text = item.body
         
         return cell
@@ -57,7 +56,7 @@ class PostsTableViewController: UITableViewController {
     // MARK: - Network Method
     func fetchPosts() {
         //
-        self.presnter.fetchPosts()
+        self.presenter.fetchPosts()
     }
     
     func referchBarButton() {
@@ -92,7 +91,7 @@ extension PostsTableViewController : PostPreseterDelegate {
     
     // Fetching Post from network or Any DataSource ..
     func fetchPostOnSuccess(result : [Post]) {
-        self.tableViewData = result
+        // you can do animation .. or Reload
         self.tableView.reloadData()
     }
     
