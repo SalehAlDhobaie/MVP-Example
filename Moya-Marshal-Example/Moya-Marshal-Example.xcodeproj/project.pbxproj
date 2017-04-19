@@ -17,6 +17,7 @@
 		4C5FCC6D1E767A8A00F1A5A3 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5FCC6C1E767A8A00F1A5A3 /* Post.swift */; };
 		4C5FCC711E767AA900F1A5A3 /* PostsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5FCC701E767AA900F1A5A3 /* PostsTableViewController.swift */; };
 		4C5FCC741E767ABF00F1A5A3 /* AppNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5FCC731E767ABF00F1A5A3 /* AppNetwork.swift */; };
+		4C8DAD261EA73A2000A2478C /* PostPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8DAD251EA73A2000A2478C /* PostPresenter.swift */; };
 		8DA10CD91C7EB60409125145 /* Pods_Moya_Marshal_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B816E078F1A8356A967F802 /* Pods_Moya_Marshal_Example.framework */; };
 		C4411A51DE074E079E21EB00 /* Pods_Moya_Marshal_ExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85AA6ABE0EA9543167BA1E31 /* Pods_Moya_Marshal_ExampleTests.framework */; };
 /* End PBXBuildFile section */
@@ -58,6 +59,7 @@
 		4C5FCC6C1E767A8A00F1A5A3 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		4C5FCC701E767AA900F1A5A3 /* PostsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsTableViewController.swift; sourceTree = "<group>"; };
 		4C5FCC731E767ABF00F1A5A3 /* AppNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppNetwork.swift; sourceTree = "<group>"; };
+		4C8DAD251EA73A2000A2478C /* PostPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostPresenter.swift; sourceTree = "<group>"; };
 		7B816E078F1A8356A967F802 /* Pods_Moya_Marshal_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Moya_Marshal_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		85AA6ABE0EA9543167BA1E31 /* Pods_Moya_Marshal_ExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Moya_Marshal_ExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7DA47254AC84AEC1E131386 /* Pods-Moya-Marshal-ExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moya-Marshal-ExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Moya-Marshal-ExampleTests/Pods-Moya-Marshal-ExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				4C5FCC701E767AA900F1A5A3 /* PostsTableViewController.swift */,
+				4C8DAD251EA73A2000A2478C /* PostPresenter.swift */,
 			);
 			path = Posts;
 			sourceTree = "<group>";
@@ -484,6 +487,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C8DAD261EA73A2000A2478C /* PostPresenter.swift in Sources */,
 				4C5FCC3E1E7679B800F1A5A3 /* AppDelegate.swift in Sources */,
 				4C5FCC711E767AA900F1A5A3 /* PostsTableViewController.swift in Sources */,
 				4C5FCC741E767ABF00F1A5A3 /* AppNetwork.swift in Sources */,

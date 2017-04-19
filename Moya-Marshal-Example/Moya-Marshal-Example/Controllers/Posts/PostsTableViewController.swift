@@ -12,7 +12,9 @@ import Moya_Marshal
 class PostsTableViewController: UITableViewController {
 
     let activity = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-    var tableViewData : [Post?] = []
+    var tableViewData : [Post] = []
+    var presnter : PostPreseter!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,11 +26,10 @@ class PostsTableViewController: UITableViewController {
         title = "Posts"
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44.0
-
+        
+        // start initiate PostPresenter .. another option we can do it as 'lazy', and init(coder: .. ) .. etc
+        self.presnter = PostPreseter(delegate: self)
         referchBarButton()
-        
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,43 +47,17 @@ class PostsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
-        
         // Configure the cell...
-        if let item = tableViewData[indexPath.row] {
-            cell.textLabel?.text = item.body
-        }
+        let item = tableViewData[indexPath.row]
+        cell.textLabel?.text = item.body
         
         return cell
     }
 
     // MARK: - Network Method
     func fetchPosts() {
-        loadingUI()
-        appNetworkProvider.request(.posts) { result in
-            
-            switch result {
-            case let .success(response):
-                do {
-                    let mappedPosts : [Post] = try response.mapArray(of: Post.self)
-                    self.tableViewData = mappedPosts
-                    self.tableView.reloadData()
-                } catch {
-                    print("Error mapping posts: \(error)")
-                }
-                self.activity.stopAnimating()
-                self.referchBarButton()
-            // do something with the response data or statusCode
-            case let .failure(error):
-                print(error.errorDescription ?? "")
-                self.activity.stopAnimating()
-                self.referchBarButton()
-                break
-                // this means there was a network failure - either the request
-                // wasn't sent (connectivity), or no response was received (server
-                // timed out).  If the server responds with a 4xx or 5xx error, that
-                // will be sent as a ".success"-ful response.
-            }
-        }
+        //
+        self.presnter.fetchPosts()
     }
     
     func referchBarButton() {
@@ -95,3 +70,36 @@ class PostsTableViewController: UITableViewController {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: activity)
     }
 }
+
+
+
+extension PostsTableViewController : PostPreseterDelegate {
+    
+    // to get Post Count
+    func numperOfPosts(count: Int) {
+        print("\n\n \(#function), \(#line) value: \(count)")
+    }
+    
+    // Request Loading
+    func startLoading() {
+        loadingUI()
+    }
+    
+    func finishLoading() {
+        self.activity.stopAnimating()
+        self.referchBarButton()
+    }
+    
+    // Fetching Post from network or Any DataSource ..
+    func fetchPostOnSuccess(result : [Post]) {
+        self.tableViewData = result
+        self.tableView.reloadData()
+    }
+    
+    func fetchPostOnFailure(error : Error) {
+        print(error.localizedDescription)
+    }
+}
+
+
+
