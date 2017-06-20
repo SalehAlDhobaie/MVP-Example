@@ -1,0 +1,6 @@
+framework module Pods_Moya_Marshal_Example {
+  umbrella header "Pods-Moya-Marshal-Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

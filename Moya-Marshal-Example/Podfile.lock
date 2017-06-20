@@ -1,0 +1,29 @@
+PODS:
+  - Alamofire (4.4.0)
+  - Marshal (1.2.4)
+  - Moya (8.0.3):
+    - Moya/Core (= 8.0.3)
+  - Moya-Marshal (1.1.0):
+    - Moya-Marshal/Core (= 1.1.0)
+  - Moya-Marshal/Core (1.1.0):
+    - Marshal (~> 1.2.0)
+    - Moya (~> 8.0.0)
+  - Moya/Core (8.0.3):
+    - Alamofire (~> 4.1)
+    - Result (~> 3.0)
+  - Result (3.2.1)
+
+DEPENDENCIES:
+  - Moya (~> 8.0)
+  - Moya-Marshal
+
+SPEC CHECKSUMS:
+  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  Marshal: 8e04e6624e506921db7143b0bfd83caee03f32d6
+  Moya: d3721622e3cc0cc2f038d69a258686f0b66e7252
+  Moya-Marshal: 0db7583633cd6ab2c50b81971646a95583106fea
+  Result: 2453a22e5c5b11c0c3a478736e82cd02f763b781
+
+PODFILE CHECKSUM: 5e1dfd6c71c0983eb2614cd933d9078a08a7ac6c
+
+COCOAPODS: 1.2.0
